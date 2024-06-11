@@ -17,9 +17,14 @@
 import argparse
 
 import pytest
-from craft_application.commands.other import VersionCommand, get_other_command_group
+from craft_application.commands.other import (
+    InitCommand,
+    VersionCommand,
+    get_other_command_group,
+)
 
 OTHER_COMMANDS = {
+    InitCommand,
     VersionCommand,
 }
 
