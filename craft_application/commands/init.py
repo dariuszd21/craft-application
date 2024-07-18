@@ -38,7 +38,7 @@ if TYPE_CHECKING:  # pragma: no cover
 
 
 class InitCommand(base.AppCommand):
-    """Show the snapcraft version."""
+    """Command to create initial project files."""
 
     name = "init"
     help_msg = "Create an initial project filetree"

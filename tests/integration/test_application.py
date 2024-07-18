@@ -12,6 +12,7 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 """Integration tests for the Application."""
+
 import argparse
 import pathlib
 import shutil
@@ -72,11 +73,12 @@ Global options:
     -V, --version:  Show the application version and exit
 
 Starter commands:
+             init:  Create an initial project filetree
           version:  Show the application version and exit
 
 Commands can be classified as follows:
         Lifecycle:  build, clean, pack, prime, pull, stage
-            Other:  version
+            Other:  init, version
 
 For more information about a command, run 'testcraft help <command>'.
 For a summary of all commands, run 'testcraft help --all'.
@@ -115,12 +117,15 @@ def test_special_inputs(capsys, monkeypatch, app, argv, stdout, stderr, exit_cod
     with pytest.raises(SystemExit) as exc_info:
         app.run()
 
-    pytest_check.equal(exc_info.value.code, exit_code, "exit code incorrect")
+    with pytest_check.check:
+        assert exc_info.value.code == exit_code, "exit code incorrect"
 
     captured = capsys.readouterr()
 
-    pytest_check.equal(captured.out, stdout, "stdout does not match")
-    pytest_check.equal(captured.err, stderr, "stderr does not match")
+    with pytest_check.check:
+        assert captured.out == stdout, "stdout does not match"
+    with pytest_check.check:
+        assert captured.err == stderr, "stderr does not match"
 
 
 @pytest.mark.parametrize("project", (d.name for d in VALID_PROJECTS_DIR.iterdir()))
