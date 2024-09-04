@@ -60,9 +60,7 @@ class InitCommand(base.AppCommand):
             type=pathlib.Path,
             nargs="?",
             default=None,
-            help=(
-                "Path to initialize project in; defaults to <name> or current working directory."
-            ),
+            help="Path to initialize project in; defaults to current working directory.",
         )
         parser.add_argument(
             "--name",
