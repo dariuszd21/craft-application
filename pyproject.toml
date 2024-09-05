@@ -4,7 +4,7 @@ description = "A framework for *craft applications."
 dynamic = ["version", "readme"]
 dependencies = [
     "craft-archives>=2.0.0",
-    "craft-cli>=2.6.0",
+    "craft-cli @ git+https://github.com/canonical/craft-cli@73e896e1c018efcaefb0fb9deceb32e24d4bd95f",
     "craft-grammar>=2.0.0",
     "craft-parts>=2.0.0",
     "craft-providers>=2.0.0",
