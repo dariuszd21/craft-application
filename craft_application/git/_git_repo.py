@@ -588,6 +588,8 @@ class GitRepo:
         checking_command = [
             self.get_git_command(),
             "branch",
+            "--color=never",
+            "--column=never",
             "--remotes",
             "--contains",
             commit_sha,
